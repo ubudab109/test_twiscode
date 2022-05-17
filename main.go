@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func main() {
@@ -10,11 +11,15 @@ func main() {
 	fmt.Println(longestPalindrome("aku suka makan nasi"))
 }
 
+/*
+ Palindrome
+*/
 func longestPalindrome(s string) string {
-	stringLength := len(s)
+	stringMerge := strings.Join(strings.Fields(s), "")
+	stringLength := len(stringMerge)
 
-	if s == "" || stringLength == 0 {
-		return s
+	if stringMerge == "" || stringLength == 0 {
+		return stringMerge
 	}
 
 	maxLength := 1
@@ -25,7 +30,7 @@ func longestPalindrome(s string) string {
 		low = i - 1
 		high = i
 
-		for low >= 0 && high < stringLength && s[low] == s[high] {
+		for low >= 0 && high < stringLength && stringMerge[low] == stringMerge[high] {
 			if high-low+1 > maxLength {
 				start = low
 				maxLength = high - low + 1
@@ -38,7 +43,7 @@ func longestPalindrome(s string) string {
 		low = i - 1
 		high = i + 1
 
-		for low >= 0 && high < stringLength && s[low] == s[high] {
+		for low >= 0 && high < stringLength && stringMerge[low] == stringMerge[high] {
 			if high-low+1 > maxLength {
 				start = low
 				maxLength = high - low + 1
@@ -48,7 +53,7 @@ func longestPalindrome(s string) string {
 		}
 	}
 
-	return s[start : start+maxLength]
+	return stringMerge[start : start+maxLength]
 }
 
 /*
