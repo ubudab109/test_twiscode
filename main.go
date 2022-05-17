@@ -15,7 +15,7 @@ func main() {
  Palindrome
 */
 func longestPalindrome(s string) string {
-	stringMerge := strings.Join(strings.Fields(s), "")
+	stringMerge := strings.Join(strings.Fields(s), "") // merge string first
 	stringLength := len(stringMerge)
 
 	if stringMerge == "" || stringLength == 0 {
